@@ -3,10 +3,10 @@ require('./Ms');
 require('./Users');
 
 //connection string
-let dbURI = 'mongodb://localhost/ppApp';
+let dbURI = 'mongodb://localhost/aqispa';
 
 if(process.env.NODE_ENV === 'production') {
-    dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/ppApp';
+    dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/aqisv3';
 }
 
 mongoose.connect(dbURI, {useNewUrlParser: true});

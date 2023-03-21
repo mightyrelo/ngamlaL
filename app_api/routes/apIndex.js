@@ -13,6 +13,7 @@ const auth = jwt({
 const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
 const authCtrl = require('../controllers/authentication');
+const productsCtrl = require('../controllers/Products');
 
 
 //model/collection routes
@@ -46,5 +47,27 @@ router
 
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
+
+router
+   .route('/products')
+   .get(productsCtrl.productsReadAll)
+   .post(productsCtrl.productsCreateOne)
+ 
+ 
+router
+   .route('/products/:productid')
+   .get(productsCtrl.productsReadOne)
+   .put(productsCtrl.productsUpdateOne)
+   .delete(productsCtrl.productsDeleteOne)
+
+router
+    .route('/products/name/:productName')
+    .get(productsCtrl.productsReadByName);
+
+router
+    .route('/products/userName/:userName')
+    .get(productsCtrl.productsReadByUserName);
+
+
 
 module.exports = router;
