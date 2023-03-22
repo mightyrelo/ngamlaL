@@ -32,6 +32,10 @@ border: 3px solid gray;
 margin-top: 2px;
 }
 
+.nav-item {
+  margin-left: 2%;
+}
+
 .active {
   color: rgb(174, 0, 255);
   font-weight: bolder;
