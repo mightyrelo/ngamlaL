@@ -4,12 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { AuthResponse } from './auth-response';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiBaseUrl;
+  
 
   constructor(
     private http: HttpClient
