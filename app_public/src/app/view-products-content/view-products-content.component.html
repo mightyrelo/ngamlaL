@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12" >
+    <small>
+      <button class="btn-primary" (click)="displayForm=true">add product</button>
+    </small>
+  </div>
+</div>
+<div *ngIf="displayForm" class="col-12 col-md-8">
+  <form (ngSubmit)="onProductSubmit()" method="post" role="form">
+    <div *ngIf="formError" class="alert alert-danger">
+      {{formError}}</div>
+    <div class="form-group">
+       <label for="name">name</label>
+       <input class="form-control" id="name" name="name" type="text" placeholder="" [(ngModel)]="newProduct.name">
+    </div> 
+    <div class="form-group">
+       <label for="description">description</label>
+       <textarea class="form-control" id="description" name="description" type="text" placeholder="" [(ngModel)]="newProduct.description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="retail">retail</label>
+      <input class="form-control" id="retail" name="retail" type="text" placeholder="" [(ngModel)]="newProduct.retail">
+   </div> 
+    <div class="form-group">
+      <label for="trade">trade</label>
+      <input class="form-control" id="trade" name="trade" type="text" placeholder="" [(ngModel)]="newProduct.trade">
+   </div> 
+   <div class="form-group">
+    <label for="selling">selling</label>
+    <input class="form-control" id="selling" name="selling" type="text" placeholder="" [(ngModel)]="newProduct.selling">
+   </div>
+    <div class="form-group">
+    </div>
+    <small><button  type="submit" role="button" class="btn-primary sm-button">add</button> </small>
+    <small><button (click)="resetAndHideProductForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
+  </form>     
+</div>
+<div *ngFor="let product of products" class="card">
+  <div class="card-block"></div>
+  <h4><a routerLink="/products/{{product._id}}" class="heading">{{product.name}}</a>
+   <small>&nbsp;
+     <a class="btn float-right" style="font-size: 0.8em" (click)="flagged(product._id)">delete</a>
+   </small><span class="badge badge-pill badge-default float-right"></span>
+   <div *ngIf="isFlagged(product._id)">
+    <small><button style="font-size: 0.8em" (click)="setFlagOff(product._id)" class="btn btn-primary float-right">cancel</button></small>
+    <small> <button style="font-size: 0.8em" (click)="deleteProduct(product._id)" class="btn btn-primary float-right">for real?</button></small>
+   </div>
+  </h4>
+ <p class="address">{{product.description}}</p>
+ <div class="facilities"> 
+   <span class="badge badge-warning">{{product.retail | currency :'R':true}}</span>
+   <span class="badge badge-warning">{{product.trade | currency:'R':true}}</span>
+   <span class="badge badge-warning">{{product.selling | currency:'R': true}}</span>
+ </div>
+ <div class="col-12 col-md-4"></div>
+</div>

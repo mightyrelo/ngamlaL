@@ -10,8 +10,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MPageComponent } from './m-page/m-page.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { MDetailsPageComponent } from './m-details-page/m-details-page.component';
 import { MDetailsContentComponent } from './m-details-content/m-details-content.component';
@@ -21,6 +19,11 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ViewProductsComponent } from './view-products/view-products.component';
+import { ViewProductsContentComponent } from './view-products-content/view-products-content.component';
+import { ViewBarComponent } from './view-bar/view-bar.component';
+import { ViewHeaderComponent } from './view-header/view-header.component';
+
 
 
 @NgModule({
@@ -32,8 +35,6 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     FooterComponent,
     HomePageComponent,
     MPageComponent,
-    PageHeaderComponent,
-    SideBarComponent,
     HomeContentComponent,
     MDetailsPageComponent,
     MDetailsContentComponent,
@@ -41,7 +42,11 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     RegisterPageComponent,
     LoginPageComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ViewProductsComponent,
+    ViewProductsContentComponent,
+    ViewBarComponent,
+    ViewHeaderComponent
   ],
   imports: [
     BrowserModule,

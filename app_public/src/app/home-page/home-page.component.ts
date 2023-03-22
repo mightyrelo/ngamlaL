@@ -9,12 +9,12 @@ export class HomePageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'Home',
-      strapline: 'This is the home page'
+      title: 'Ngamla - ',
+      strapline: 'App for Man on the Move!'
     },
-    sideBar: {
-      main: 'Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app ',
-      sub: 'Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app '
+    viewBar: {
+      main: 'Azishe Ngamla!',
+      sub: ''
     }
   };
 

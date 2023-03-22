@@ -9,7 +9,7 @@ export class LoginPageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'Log into ppApp',
+      title: 'Log into Ngamla!',
       strapline: ''
     },
     sideBar: {
