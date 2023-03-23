@@ -10,6 +10,7 @@ import { MDetailsContentComponent } from '../m-details-content/m-details-content
 import { RegisterPageComponent } from '../register-page/register-page.component';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { ViewProductsComponent } from '../view-products/view-products.component';
+import { ViewCustomersComponent } from '../view-customers/view-customers.component';
 
 const routes : Routes = 
   [{
@@ -39,6 +40,9 @@ const routes : Routes =
 }, {
   path: 'products',
   component: ViewProductsComponent, 
+}, {
+  path: 'customers',
+  component: ViewCustomersComponent, 
 }];
 
 @NgModule({

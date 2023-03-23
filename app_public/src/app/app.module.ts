@@ -23,6 +23,9 @@ import { ViewProductsComponent } from './view-products/view-products.component';
 import { ViewProductsContentComponent } from './view-products-content/view-products-content.component';
 import { ViewBarComponent } from './view-bar/view-bar.component';
 import { ViewHeaderComponent } from './view-header/view-header.component';
+import { ViewCustomersComponent } from './view-customers/view-customers.component';
+import { ViewCustomersContentComponent } from './view-customers-content/view-customers-content.component';
+import { ContactPipe } from './contact.pipe';
 
 
 
@@ -46,7 +49,10 @@ import { ViewHeaderComponent } from './view-header/view-header.component';
     ViewProductsComponent,
     ViewProductsContentComponent,
     ViewBarComponent,
-    ViewHeaderComponent
+    ViewHeaderComponent,
+    ViewCustomersComponent,
+    ViewCustomersContentComponent,
+    ContactPipe
   ],
   imports: [
     BrowserModule,
