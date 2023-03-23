@@ -14,6 +14,10 @@ const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
 const authCtrl = require('../controllers/authentication');
 const productsCtrl = require('../controllers/Products');
+const custCtrl = require('../controllers/Customers');
+const quoteCtrl = require('../controllers/Quotations');
+const invCtrl = require('../controllers/Invoices');
+
 
 
 //model/collection routes
@@ -67,6 +71,54 @@ router
 router
     .route('/products/userName/:userName')
     .get(productsCtrl.productsReadByUserName);
+
+//level one - customer collection
+router
+  .route('/customers')
+  .get(custCtrl.customersReadAll)
+  .post(custCtrl.customersCreateOne);
+
+//level two - customer document
+router
+   .route('/customers/:customerId')
+   .get(custCtrl.customersReadOne)
+   .put(custCtrl.customersUpdateOne)
+   .delete(custCtrl.customersDeleteOne);
+
+router
+    .route('/customers/name/:name')
+    .get(custCtrl.customersReadByName);
+
+
+    //level three - quotaton collection
+router
+.route('/customers/:customerId/quotations')
+.get(quoteCtrl.quotationsReadAll)
+.post(auth, quoteCtrl.quotationsCreateOne);
+
+//level four = quotation document
+router
+ .route('/customers/:customerId/quotations/:quotationId')
+ .get(quoteCtrl.quotationsReadOne)
+ .put(quoteCtrl.quotationsUpdateOne)
+ .delete(auth, quoteCtrl.quotationsDeleteOne);
+
+
+ router
+ .route('/customers/:customerid/invoices')
+ .get(invCtrl.invoicesReadAll);
+
+router.post('/customers/:customerid/quotations/:quotationid/invoice', invCtrl.invoicesCreateOne);
+
+
+router
+ .route('/customers/:customerid/invoices/:invoiceid')
+ .get(invCtrl.invoicesReadOne)
+ .put(invCtrl.invoicesUpdateOne)
+ .delete(invCtrl.invoicesDeleteOne);
+
+
+
 
 
 
