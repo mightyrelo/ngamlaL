@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MostRecentFirstPipe implements PipeTransform {
 
   private compare(a, b) {
-    console.log('comparing');
+   
     const createdOnA = a.b3;
     const createdOnB = b.b3;
     let comparison = 1;
