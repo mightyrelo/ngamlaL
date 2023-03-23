@@ -11,6 +11,7 @@ import { RegisterPageComponent } from '../register-page/register-page.component'
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { ViewProductsComponent } from '../view-products/view-products.component';
 import { ViewCustomersComponent } from '../view-customers/view-customers.component';
+import { ViewCustomerComponent } from '../view-customer/view-customer.component';
 
 const routes : Routes = 
   [{
@@ -43,6 +44,9 @@ const routes : Routes =
 }, {
   path: 'customers',
   component: ViewCustomersComponent, 
+}, {
+  path: 'customers/:customerId',
+  component: ViewCustomerComponent, 
 }];
 
 @NgModule({

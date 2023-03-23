@@ -1,0 +1,115 @@
+<div class="col-12 col-lg-9">
+  <div class="row"> <div class="col-12 col-md-6">
+    <p class="rating">
+      <small>
+        <i class="fa{{dbCustomer.rating < 1 ? 'r':'s' }} fa-star"></i>
+        <i class="fa{{dbCustomer.rating < 2 ? 'r':'s' }} fa-star"></i>
+        <i class="fa{{dbCustomer.rating < 3 ? 'r':'s' }} fa-star"></i>
+        <i class="fa{{dbCustomer.rating < 4 ? 'r':'s' }} fa-star"></i>
+        <i class="fa{{dbCustomer.rating < 5 ? 'r':'s' }} fa-star"></i>
+      </small>
+    </p>
+    <p>{{dbCustomer.name}}</p>
+    <div class="card card-primary">
+      <div class="card-block">
+        <h2 class="card-title">Contact Info </h2>
+        <p class="card-text">{{dbCustomer.contact | contact}}</p>
+        <p class="card-text">{{dbCustomer.email}}</p>
+        <p class="card-text">{{dbCustomer.address}}</p>
+       </div>
+     </div>
+     <div class="card card-primary">
+        <div class="card-block">
+          <h2 class="card-title">Facilities </h2>
+          <span *ngFor="let facility of dbCustomer.facilities" class="badge badge-warning"> <i class="fa fa-check"> </i>&nbsp; {{facility}} </span>
+          &nbsp;
+         </div></div>
+       </div>
+       <div class="col-12 col-md-6 location-map">
+          <div class="card card-primary">
+            <div class="card-block">
+              <h2 class="card-title">{{dbCustomer.name}} Location </h2>
+              <img class="img-fluid roundedrounded"  src='/assets/images/map.PNG' alt='map of location' height="660">
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="row">
+          <div class="col-12">
+            <div class="card-primary review-card">
+              <div class="card-block">
+                <h2 class="card-title">Quotations </h2>
+                <div class="row sm-button" [ngSwitch]="isLoggedIn()">
+                  <small>
+                    <button (click)="displayForm=true" class="btn-primary float-right" *ngSwitchCase="true">add quote</button>
+                    <a routerLink="/login"><button class="btn-primary float-right" *ngSwitchDefault>login to quote</button></a>
+                  </small>
+                </div>
+                <div *ngIf="displayForm" class="col-12 col-md-8">
+                  <form (ngSubmit)="onQuoteSubmit()" method="post" role="form">
+                    <div *ngIf="formError" class="alert alert-danger">
+                      {{formError}}</div>
+                    <div class="form-group row">
+                        <label  for="product">Product</label>
+                          <select [(ngModel)]="formQuoteItem.product" class="form-control input-sm" id="name" name="product">
+                           <option></option>
+                           <option *ngFor="let product of products">{{product.name}}</option>
+                          </select>
+                    </div> 
+                    <div class="form-group row">
+                        <label  for="product">Quantity</label>
+                          <select [(ngModel)]="formQuoteItem.quantity" class="form-control input-sm" id="name" name="quantity">
+                           <option></option>
+                           <option *ngFor="let item of counts">{{item}}</option>
+                          </select>
+                    </div> 
+                    <div class="form-group">
+                    </div>
+                    <small><button (click)="addItemToQuote()" type="button" role="button" class="btn-primary sm-button">add to quote</button></small>
+                    <small><button  type="submit" role="button" class="btn-primary sm-button">quote</button></small>
+                    <small><button (click)="resetAndHideQuoteForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
+                  </form>     
+                </div>
+                <div *ngFor="let quote of dbCustomer.quotations | mostRecentFirst" class="row review">
+                  <div class="col-12 no-gutters review-header">
+                    <small class="reviewTimestamp"> {{quote.createdOn | date: 'd MMMM  yyyy hh:mm'}} </small>
+                    <a style="font-size: 0.8em" class="btn float-right" (click)="flagged(dbCustomer._id, quote._id)">delete</a>
+                    <a style="font-size: 0.8em" class="btn float-right" (click)="invoice(dbCustomer._id, quote._id)">invoice</a>
+                    <a style="font-size: 0.8em" class="btn float-right" routerLink="/customers/{{dbCustomer._id}}/quotations/{{quote._id}}">print</a>
+                    <div *ngIf="isFlagged(dbCustomer._id, quote._id)">
+                      <button style="font-size: 0.7em" (click)="setFlagOff(dbCustomer._id, quote._id)" class="btn btn-primary float-right">cancel</button>
+                      <button style="font-size: 0.7em" (click)="deleteQuote(dbCustomer._id, quote._id)" class="btn btn-primary float-right">for real?</button>
+                    </div>                    
+                   </div>
+                   <div class="col-12">
+                      <p>{{quote.summary}}</p>
+                      <small class="reviewTimestamp">Amount: {{quote.amount | currency :'R':true}} --------&gt;</small>
+                      <small class="reviewTimestamp">Profit: {{quote.profit | currency :'R':true}}</small>
+                   </div>
+                 </div>
+               </div>
+             </div>
+              <div class="card-block">
+                <h2 class="card-title">Invoices </h2>
+                <div class="row sm-button">
+                </div>
+                <div *ngFor="let invoice of dbCustomer.invoices | mostRecentFirst" class="row review">
+                  <div class="col-12 no-gutters review-header">
+                    <small class="reviewTimestamp"> {{invoice.createdOn | date: 'd MMMM  yyyy hh:mm'}} </small>
+                    <a  style="font-size: 0.8em" class="btn float-right" (click)="flaggedInvoice(dbCustomer._id, invoice._id)">delete</a>
+                    <a style="font-size: 0.8em" class="btn float-right" routerLink="/customers/{{dbCustomer._id}}/invoices/{{invoice._id}}">print</a>
+                    <div *ngIf="isFlaggedInvoice(dbCustomer._id, invoice._id)">
+                      <button style="font-size: 0.7em" (click)="setFlagOffInvoice(dbCustomer._id, invoice._id)" class="btn btn-primary float-right">cancel</button>
+                      <button style="font-size: 0.7em" (click)="deleteInvoice(dbCustomer._id, invoice._id)" class="btn btn-primary float-right">for real?</button>
+                    </div>                    
+                   </div>
+                   <div class="col-12">
+                      <p>{{invoice.summary}}</p>
+                      <small class="reviewTimestamp">Expense: {{invoice.expense | currency : 'R' : true}} --------&gt;</small>
+                      <small class="reviewTimestamp">Profit: {{invoice.profit | currency : 'R' : true}}</small>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
