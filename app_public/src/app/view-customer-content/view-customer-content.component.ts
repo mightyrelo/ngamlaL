@@ -8,6 +8,7 @@ import { ProductDataService } from '../product-data.service';
 import { Product } from '../product';
 import { InvoiceDataService } from '../invoice-data.service';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-customer-content',
@@ -58,7 +59,8 @@ export class ViewCustomerContentComponent implements OnInit {
     private customerDataService: CustomerDataService,
     private productDataService: ProductDataService,
     private invoiceDataService: InvoiceDataService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   public isLoggedIn() : boolean {
@@ -237,6 +239,8 @@ export class ViewCustomerContentComponent implements OnInit {
       .then(response => {
         //from quote we can generate invoice
         this.generateInvoice(cusId, qId, response);
+        let url = `/customers/${cusId}`;
+        this.router.navigateByUrl(url);
       });
   }
 

@@ -9,6 +9,8 @@ import { InvoiceDataService } from '../invoice-data.service';
 import { Company } from '../company';
 import { Customer, Invoice } from '../customer';
 
+import { AuthenticationService } from '../authentication.service';
+
 
 @Component({
   selector: 'app-view-print-invoice',
@@ -24,20 +26,48 @@ export class ViewPrintInvoiceComponent implements OnInit {
   public invoice: Invoice;
 
   public foundId : string;
+
+  public companies : Company[];
   
   constructor(
     private companyDataService : CompanyDataService,
     private invoiceDataService: InvoiceDataService,
     private customerDataService: CustomerDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthenticationService
 
   ) { }
+
+  private getUserName() : string {
+    if(this.isLoggedIn())
+    {
+      const {name} = this.authService.getCurrentUser();
+     return name ? name : 'Guest'
+    }
+    return 'Guest';
+    
+  }
+
+  public isLoggedIn() : boolean {
+    return this.authService.isLoggedIn();
+  }
 
  
 
   private getCompany() : void {
-    this.companyDataService.readCompany('63563a51f2aebf78da7348a7') //  63ad639ce44e1cd8465b1858
-      .then(resp => {this.company = resp; console.log(this.company)});
+    this.companyDataService.readCompanies()
+    .then(response => {
+      this.companies = response;
+      for(let i = 0; i < this.companies.length; i++)
+      {
+        
+        if(this.companies[i].userId == this.getUserName())
+        {
+          this.companyDataService.readCompany(this.companies[i]._id)
+           .then(resp => {this.company = resp; console.log(this.company)});
+        }        
+      }
+    });
   }
 
  
