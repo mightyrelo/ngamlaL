@@ -36,7 +36,7 @@ export class ViewPrintInvoiceComponent implements OnInit {
  
 
   private getCompany() : void {
-    this.companyDataService.readCompany('63ad639ce44e1cd8465b1858')
+    this.companyDataService.readCompany('63563a51f2aebf78da7348a7') //  63ad639ce44e1cd8465b1858
       .then(resp => {this.company = resp; console.log(this.company)});
   }
 
