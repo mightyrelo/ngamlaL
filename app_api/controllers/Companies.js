@@ -31,12 +31,14 @@ const companiesCreateOne = (req, res) => {
         return;
     }
 
+
+
     const formCompany = {
         name: req.body.name,
         address: req.body.address,
         tagline: req.body.tagline,
         email: req.body.email,
-        contacts: req.body.contacts,
+        contacts: req.body.contacts.split(', '),
         accountName: req.body.accountName,
         accountNumber: req.body.accountNumber,
         branch: req.body.branch,
