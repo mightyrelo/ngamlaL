@@ -30,6 +30,13 @@ import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { ViewCustomerContentComponent } from './view-customer-content/view-customer-content.component';
 import { ViewCompaniesComponent } from './view-companies/view-companies.component';
 import { ViewCompaniesContentComponent } from './view-companies-content/view-companies-content.component';
+import { ViewPrintComponent } from './view-print/view-print.component';
+import { CompanyTagComponent } from './company-tag/company-tag.component';
+import { CompanyContactComponent } from './company-contact/company-contact.component';
+import { CustomerContactsComponent } from './customer-contacts/customer-contacts.component';
+import { QuoteDetailsComponent } from './quote-details/quote-details.component';
+import { QuoteItemsComponent } from './quote-items/quote-items.component';
+import { BankingComponent } from './banking/banking.component';
 
 
 
@@ -60,7 +67,14 @@ import { ViewCompaniesContentComponent } from './view-companies-content/view-com
     ViewCustomerComponent,
     ViewCustomerContentComponent,
     ViewCompaniesComponent,
-    ViewCompaniesContentComponent
+    ViewCompaniesContentComponent,
+    ViewPrintComponent,
+    CompanyTagComponent,
+    CompanyContactComponent,
+    CustomerContactsComponent,
+    QuoteDetailsComponent,
+    QuoteItemsComponent,
+    BankingComponent
   ],
   imports: [
     BrowserModule,

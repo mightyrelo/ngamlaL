@@ -13,6 +13,7 @@ import { ViewProductsComponent } from '../view-products/view-products.component'
 import { ViewCustomersComponent } from '../view-customers/view-customers.component';
 import { ViewCustomerComponent } from '../view-customer/view-customer.component';
 import { ViewCompaniesComponent } from '../view-companies/view-companies.component';
+import { ViewPrintComponent } from '../view-print/view-print.component';
 
 const routes : Routes = 
   [{
@@ -51,6 +52,9 @@ const routes : Routes =
 }, {
   path: 'companies',
   component: ViewCompaniesComponent, 
+}, {
+  path: 'customers/:customerId/quotations/:quotationId',
+  component: ViewPrintComponent, 
 }];
 
 @NgModule({

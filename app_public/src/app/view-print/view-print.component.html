@@ -1,0 +1,16 @@
+<div class="outer">
+  <div class="parent">
+    <app-company-tag *ngIf="company" [content]="company"></app-company-tag>
+    <app-company-contact *ngIf="company" [content]="company"></app-company-contact>
+  </div>
+  <div class="parent1">
+    <app-customer-contacts *ngIf="customer" [content]="customer"></app-customer-contacts>
+    <app-quote-details *ngIf="quote" [content]="quote"></app-quote-details>
+  </div>
+  <div class="parent3">
+    <app-quote-items *ngIf="quote" [content]="quote"></app-quote-items>
+  </div>
+  <div class="parent4">
+    <app-banking *ngIf="company" [content]="company"></app-banking>
+  </div>
+</div>
