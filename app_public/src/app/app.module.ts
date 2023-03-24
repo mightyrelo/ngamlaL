@@ -28,6 +28,8 @@ import { ViewCustomersContentComponent } from './view-customers-content/view-cus
 import { ContactPipe } from './contact.pipe';
 import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { ViewCustomerContentComponent } from './view-customer-content/view-customer-content.component';
+import { ViewCompaniesComponent } from './view-companies/view-companies.component';
+import { ViewCompaniesContentComponent } from './view-companies-content/view-companies-content.component';
 
 
 
@@ -56,7 +58,9 @@ import { ViewCustomerContentComponent } from './view-customer-content/view-custo
     ViewCustomersContentComponent,
     ContactPipe,
     ViewCustomerComponent,
-    ViewCustomerContentComponent
+    ViewCustomerContentComponent,
+    ViewCompaniesComponent,
+    ViewCompaniesContentComponent
   ],
   imports: [
     BrowserModule,
