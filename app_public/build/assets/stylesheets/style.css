@@ -119,13 +119,14 @@ h4 small {
   }
 
   input[type="text"], textarea[type="text"], input[type="password"], input[type="email"] {
-    background-color: rgba(218,165,32,0.3);
+    background-color: rgba(0,100,0, 0.2);
     color: white;
   
   }
 
   input[type="text"]:focus, textarea[type="text"]:focus, option[type="text"], input[type="password"]:focus, input[type="email"]:focus{
-    background-color: rgba(218,165,32,0.7);
+    background-color: rgba(0,100,0, 0.2);
+    color: white;
   }
 
   .parent {
