@@ -124,14 +124,7 @@ export class ViewCompaniesContentComponent implements OnInit {
 
   getCompanies() : void {
     this.companyDataService.readCompanies()
-      .then(response => {this.companies = response; 
-        for(let i = 0; i < this.companies.length;i++)
-        {
-          for(let j = 0; j < this.companies[i].contacts.length; j++){
-            console.log(this.companies[i].contacts[j]);
-          }
-        }}
-      );
+      .then(response => {this.companies = response;});
   }
 
 
