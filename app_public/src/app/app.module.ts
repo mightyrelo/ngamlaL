@@ -37,6 +37,9 @@ import { CustomerContactsComponent } from './customer-contacts/customer-contacts
 import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { QuoteItemsComponent } from './quote-items/quote-items.component';
 import { BankingComponent } from './banking/banking.component';
+import { ViewPrintInvoiceComponent } from './view-print-invoice/view-print-invoice.component';
+import { InvoiceDetailsComponent } from './invoice-details/invoice-details.component';
+import { InvoiceItemsComponent } from './invoice-items/invoice-items.component';
 
 
 
@@ -74,7 +77,10 @@ import { BankingComponent } from './banking/banking.component';
     CustomerContactsComponent,
     QuoteDetailsComponent,
     QuoteItemsComponent,
-    BankingComponent
+    BankingComponent,
+    ViewPrintInvoiceComponent,
+    InvoiceDetailsComponent,
+    InvoiceItemsComponent
   ],
   imports: [
     BrowserModule,
