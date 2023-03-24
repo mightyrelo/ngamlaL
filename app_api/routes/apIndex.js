@@ -17,6 +17,7 @@ const productsCtrl = require('../controllers/Products');
 const custCtrl = require('../controllers/Customers');
 const quoteCtrl = require('../controllers/Quotations');
 const invCtrl = require('../controllers/Invoices');
+const compCtrl = require('../controllers/Companies');
 
 
 
@@ -116,6 +117,20 @@ router
  .get(invCtrl.invoicesReadOne)
  .put(invCtrl.invoicesUpdateOne)
  .delete(invCtrl.invoicesDeleteOne);
+
+//level one - customer collection
+router
+.route('/companies')
+.get(compCtrl.companiesReadAll)
+.post(compCtrl.companiesCreateOne);
+
+//level two = customer document
+router
+ .route('/companies/:companyId')
+ .get(compCtrl.companiesReadOne)
+ .put(compCtrl.companiesUpdateOne)
+ .delete(compCtrl.companiesDeleteOne);
+
 
 
 
