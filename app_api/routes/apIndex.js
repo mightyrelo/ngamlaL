@@ -95,7 +95,7 @@ router
 router
 .route('/customers/:customerId/quotations')
 .get(quoteCtrl.quotationsReadAll)
-.post(auth, quoteCtrl.quotationsCreateOne);
+.post(quoteCtrl.quotationsCreateOne);
 
 //level four = quotation document
 router

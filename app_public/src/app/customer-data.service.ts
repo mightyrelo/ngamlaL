@@ -43,8 +43,13 @@ export class CustomerDataService {
 
   public addCustomer(customer: Customer) : Promise<Customer> {
     const url : string = `${this.apiBaseUrl}/customers`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': `Bearer ${this.storage.getItem('ppApp-token')}`
+      })
+    };
     return this.http
-        .post(url, customer)
+        .post(url, customer, httpOptions)
         .toPromise()
         .then(response => response as Customer)
         .catch(this.handleError);

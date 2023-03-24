@@ -7,6 +7,7 @@ import { CustomerDataService } from '../customer-data.service';
 import { QuotationDataService } from '../quotation-data.service';
 import { Company } from '../company';
 import { Customer, Quote } from '../customer';
+import { AuthenticationService } from '../authentication.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ViewPrintComponent implements OnInit {
   public company : Company;
   public customer : Customer;
   public quote: Quote;
+  public companies : Company[];
 
   public foundId : string;
   
@@ -26,7 +28,8 @@ export class ViewPrintComponent implements OnInit {
     private companyDataService : CompanyDataService,
     private quoteDataService: QuotationDataService,
     private customerDataService: CustomerDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthenticationService
 
   ) { }
 
@@ -36,9 +39,41 @@ export class ViewPrintComponent implements OnInit {
     this.getQuote(cusId, qId);
   }
 
+  private getUserName() : string {
+    if(this.isLoggedIn())
+    {
+      const {name} = this.authService.getCurrentUser();
+     return name ? name : 'Guest'
+    }
+    return 'Guest';
+    
+  }
+
+  public isLoggedIn() : boolean {
+    return this.authService.isLoggedIn();
+  }
+
   private getCompany() : void {
-    this.companyDataService.readCompany('63563a51f2aebf78da7348a7')//  63ad639ce44e1cd8465b1858
+    //this.companyDataService.readCompany('63563a51f2aebf78da7348a7')//  63ad639ce44e1cd8465b1858
+    this.companyDataService.readCompany(this.getCompanyByUsername(this.getUserName()))
        .then(resp => {this.company = resp; console.log(this.company)});
+  }
+
+  private getCompanyByUsername(userName: string) : string
+  {
+    this.companyDataService.readCompanies()
+    .then(response => {
+      this.companies = response;
+      for(let i = 0; i < this.companies.length; i++)
+      {
+        if(this.companies[i].userId = userName)
+        {
+          return this.companies[i]._id;
+        }        
+      }
+      return null;
+    });
+    return null;
   }
 
   private getCustomer(id: string) : void {
