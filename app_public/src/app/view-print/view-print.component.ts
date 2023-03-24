@@ -55,25 +55,19 @@ export class ViewPrintComponent implements OnInit {
 
   private getCompany() : void {
     //this.companyDataService.readCompany('63563a51f2aebf78da7348a7')//  63ad639ce44e1cd8465b1858
-    this.companyDataService.readCompany(this.getCompanyByUsername(this.getUserName()))
-       .then(resp => {this.company = resp; console.log(this.company)});
-  }
-
-  private getCompanyByUsername(userName: string) : string
-  {
     this.companyDataService.readCompanies()
     .then(response => {
       this.companies = response;
       for(let i = 0; i < this.companies.length; i++)
       {
-        if(this.companies[i].userId = userName)
+        
+        if(this.companies[i].userId == this.getUserName())
         {
-          return this.companies[i]._id;
+          this.companyDataService.readCompany(this.companies[i]._id)
+           .then(resp => {this.company = resp; console.log(this.company)});
         }        
       }
-      return null;
     });
-    return null;
   }
 
   private getCustomer(id: string) : void {
