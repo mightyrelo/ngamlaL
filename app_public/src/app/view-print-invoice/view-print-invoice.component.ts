@@ -28,6 +28,8 @@ export class ViewPrintInvoiceComponent implements OnInit {
   public foundId : string;
 
   public companies : Company[];
+
+  public userName : string;
   
   constructor(
     private companyDataService : CompanyDataService,
@@ -42,6 +44,7 @@ export class ViewPrintInvoiceComponent implements OnInit {
     if(this.isLoggedIn())
     {
       const {name} = this.authService.getCurrentUser();
+      this.userName = name;
      return name ? name : 'Guest'
     }
     return 'Guest';

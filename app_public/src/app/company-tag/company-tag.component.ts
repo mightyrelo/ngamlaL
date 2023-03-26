@@ -9,9 +9,13 @@ export class CompanyTagComponent implements OnInit {
 
   @Input() content: any;
 
+  public companyLogo : string;
+
   constructor() { }
 
   ngOnInit() {
+    this.companyLogo = `/assets/images/${this.content.userId}.png`;
+      console.log(this.companyLogo);
   }
 
 }

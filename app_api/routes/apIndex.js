@@ -102,7 +102,7 @@ router
  .route('/customers/:customerId/quotations/:quotationId')
  .get(quoteCtrl.quotationsReadOne)
  .put(quoteCtrl.quotationsUpdateOne)
- .delete(auth, quoteCtrl.quotationsDeleteOne);
+ .delete(quoteCtrl.quotationsDeleteOne);
 
 
  router

@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class InvoiceDetailsComponent implements OnInit {
 
   @Input() content: any;
+  @Input() user: any;
 
   constructor() { }
 

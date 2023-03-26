@@ -5,7 +5,7 @@
   </div>
   <div class="parent1">
     <app-customer-contacts *ngIf="customer" [content]="customer"></app-customer-contacts>
-    <app-quote-details *ngIf="quote" [content]="quote"></app-quote-details>
+    <app-quote-details *ngIf="quote" [content]="quote" [user]="userName"></app-quote-details>
   </div>
   <div class="parent3">
     <app-quote-items *ngIf="quote" [content]="quote"></app-quote-items>

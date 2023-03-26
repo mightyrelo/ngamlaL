@@ -23,6 +23,8 @@ export class ViewPrintComponent implements OnInit {
   public companies : Company[];
 
   public foundId : string;
+
+  public userName : string;
   
   constructor(
     private companyDataService : CompanyDataService,
@@ -43,6 +45,7 @@ export class ViewPrintComponent implements OnInit {
     if(this.isLoggedIn())
     {
       const {name} = this.authService.getCurrentUser();
+      this.userName = name;
      return name ? name : 'Guest'
     }
     return 'Guest';
