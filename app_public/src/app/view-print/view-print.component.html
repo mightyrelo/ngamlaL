@@ -1,9 +1,9 @@
 <div>
   <p *ngIf="customer">
     <a style="font-size: 1.3em;color: whitesmoke;" class="btn" routerLink="/customers/{{customer._id}}"><i style="font-size: 2.0" class="fa-solid fa-backward"></i> to {{customer.name}}</a>
-    <a style="font-size: 2.3em;color: whitesmoke;" class="btn float-right" routerLink="/customers/{{customer._id}}"><i class="fa-solid fa-file-pdf"></i></a>
+    <a style="font-size: 2.3em;color: whitesmoke;" class="btn float-right" (click)="createPDF()"><i class="fa-solid fa-file-pdf"></i></a>
   </p>
-    <div class="outer">
+    <div class="outer" id="print">
     <div class="parent">
       <app-company-tag *ngIf="company" [content]="company"></app-company-tag>
       <app-company-contact *ngIf="company" [content]="company"></app-company-contact>

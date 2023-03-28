@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
+import * as html2pdf from 'html2pdf.js';
+
 
 import { CompanyDataService } from '../company-data.service';
 import { CustomerDataService } from '../customer-data.service';
@@ -72,6 +74,21 @@ export class ViewPrintInvoiceComponent implements OnInit {
       }
     });
   }
+
+  public createPDF() : void {
+    const options = {
+      filename: `${this.customer.name}I.pdf`,
+      html2canvas: {},
+      jsPDF: {orientation: 'landscape'}
+    };
+    const content: Element = document.getElementById('print');
+    
+    html2pdf()
+      .from(content)
+      .set(options)
+      .save();
+  }
+
 
  
   ngOnInit() : void {
