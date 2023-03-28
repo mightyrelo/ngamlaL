@@ -29,12 +29,16 @@
    </div> 
    <div class="form-group">
     <label for="rating">rating</label>
-    <input class="form-control" id="rating" name="rating" type="text" placeholder="" [(ngModel)]="formCustomer.rating">
+    <select [(ngModel)]="formCustomer.rating" class="form-control bg" id="rating" name="rating">
+      <option  class="form-control bg" *ngFor="let item of counts">{{item}}</option>
+     </select>
    </div>
    <div class="form-group">
-    <label for="gender">gender</label>
-    <input class="form-control" id="gender" name="gender" type="text" placeholder="" [(ngModel)]="formCustomer.gender">
+    <label for="gender">gender</label><br>
+    <input type="radio" name="gender" value="female" checked="checked" [(ngModel)]="formCustomer.gender"> female
+    <input type="radio" name="gender" value="male" [(ngModel)]="formCustomer.gender"> male
    </div>
+   
    <div class="form-group">
     <label for="facilities">facilities</label>
     <input class="form-control" id="facilities" name="facilities" type="text" placeholder="" [(ngModel)]="formCustomer.facilities">
@@ -45,7 +49,7 @@
     <small><button (click)="resetAndHideCustomerForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
   </form>     
 </div> 
-<div *ngFor="let customer of customers" class="card">
+<div *ngFor="let customer of customers | mostRecentFirst" class="card">
    <div class="card-block"> 
    </div>
    <h4> <a routerLink="/customers/{{customer._id}}" class="heading">{{customer.name}}</a></h4>

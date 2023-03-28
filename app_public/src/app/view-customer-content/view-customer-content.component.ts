@@ -27,7 +27,8 @@ export class ViewCustomerContentComponent implements OnInit {
     product: '',
     quantity: null,
     productAmount: null,
-    description: 'd'
+    description: 'd',
+    summary: ''
   } 
 
 
@@ -43,6 +44,8 @@ export class ViewCustomerContentComponent implements OnInit {
   };
 
   public counts = [];
+
+  public itemAdded : boolean;
   
 
   private customers: Customer[] = [];
@@ -100,6 +103,7 @@ export class ViewCustomerContentComponent implements OnInit {
 
   onQuoteSubmit(){
     this.formError = '';
+    this.itemAdded = false;
     if(this.formIsValid()) {
       //get last item and set its summary
       this.quoteDataService.addQuote(this.dbCustomer._id, this.newQuotation)
@@ -126,10 +130,13 @@ export class ViewCustomerContentComponent implements OnInit {
       this.currentProduct = foundProduct;
       this.formQuoteItem.productAmount = this.currentProduct.selling;
       this.formQuoteItem.description = this.currentProduct.description;
+      this.formQuoteItem.summary += `${this.formQuoteItem.quantity} x ${this.currentProduct.name}, ` 
       this.newQuotation.summary += `${this.formQuoteItem.quantity} x ${this.currentProduct.name}, `;
       this.newQuotation.amount += this.formQuoteItem.quantity * this.currentProduct.selling;
       this.newQuotation.profit += this.formQuoteItem.quantity * (this.currentProduct.selling - this.currentProduct.trade);
       this.newQuotation.expense += this.formQuoteItem.quantity * this.currentProduct.trade; 
+
+      this.itemAdded = true;
 
       this.newQuotation.quoteItems.push({
         product: this.formQuoteItem.product,
@@ -154,6 +161,8 @@ export class ViewCustomerContentComponent implements OnInit {
     this.newQuotation.expense = 0;
     this.newQuotation.amount = 0;
     this.currentProduct = null;
+    this.formQuoteItem.summary = '';
+    this.itemAdded = false;
 
   }
 
@@ -308,7 +317,7 @@ export class ViewCustomerContentComponent implements OnInit {
     
     this.getCustomers();
     this.readProducts();
-    for(let i = 1; i <= 10;i++){
+    for(let i = 1; i <= 30;i++){
         this.counts[i] = i;
     }
   }

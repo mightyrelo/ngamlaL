@@ -60,7 +60,6 @@ padding-bottom: 0.5em;
 background-color: #31727a;
 padding-top: 0.5em;
 padding-bottom: 0.5em;
-margin-bottom: 0.5em;
 }
 .review {
 margin-right: -16px;
@@ -118,10 +117,16 @@ h4 small {
     color: rgb(82, 5, 5);
   }
 
-  input[type="text"], textarea[type="text"], input[type="password"], input[type="email"] {
+  input[type="text"], textarea[type="text"], input[type="password"], input[type="email"], option[type="text"] {
     background-color: rgba(0,100,0, 0.2);
     color: white;
   
+  }
+
+  .bg {
+    background-color: rgba(0,100,0, 0.2);
+    color: white;
+     
   }
 
   input[type="text"]:focus, textarea[type="text"]:focus, option[type="text"], input[type="password"]:focus, input[type="email"]:focus{
@@ -234,5 +239,13 @@ h4 small {
   .text {
     color: rgba(218,165,32,0.5);
   }
+
+  .bord {
+    border-left: 2px solid #31727a;
+    border-right: 2px solid #31727a;
+    border-bottom: 2px solid #31727a;
+  }
+
+
 
   

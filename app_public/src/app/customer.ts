@@ -3,6 +3,7 @@ export class QuoteItem {
     quantity: number;
     productAmount: number;
     description: string;
+    summary: string;
 }
 
 export class Quote {

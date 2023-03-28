@@ -9,6 +9,20 @@ const auth = jwt({
   userProperty: 'payload'
 });
 
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+
+var upload = multer({
+  storage: storage
+});
+
 
 const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
@@ -18,6 +32,7 @@ const custCtrl = require('../controllers/Customers');
 const quoteCtrl = require('../controllers/Quotations');
 const invCtrl = require('../controllers/Invoices');
 const compCtrl = require('../controllers/Companies');
+const imgCtrl = require('../controllers/Images');
 
 
 
@@ -132,9 +147,15 @@ router
  .delete(compCtrl.companiesDeleteOne);
 
 
+router
+  .route('/images')
+  .get(imgCtrl.imagesReadAll)
+  .post(upload.single('image'), imgCtrl.imagesCreateOne);
 
-
-
+router
+  .route('/images/:imageId')
+  .get(imgCtrl.imagesReadOne)
+  .delete(imgCtrl.imagesDeleteOne);
 
 
 module.exports = router;

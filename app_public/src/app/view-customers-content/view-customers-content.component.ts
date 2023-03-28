@@ -33,6 +33,8 @@ export class ViewCustomersContentComponent implements OnInit {
 
   public customers : Customer[];
 
+  public counts = [];
+
   constructor(
     private customerDateService: CustomerDataService,
     private authService: AuthenticationService
@@ -133,6 +135,9 @@ export class ViewCustomersContentComponent implements OnInit {
 
   ngOnInit() : void {
     this.getCustomers(this.getUserName());
+    for(let i = 1; i <= 5;i++){
+      this.counts[i] = i;
+  }
   }
 
 }
