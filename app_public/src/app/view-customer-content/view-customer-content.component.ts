@@ -239,6 +239,7 @@ export class ViewCustomerContentComponent implements OnInit {
         let invoices = this.dbCustomer.invoices.slice(0);
         invoices.unshift(response);
         this.dbCustomer.invoices = invoices;
+        window.location.reload();
       });
   }
 
