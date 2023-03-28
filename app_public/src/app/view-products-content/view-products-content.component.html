@@ -35,7 +35,7 @@
     <small><button (click)="resetAndHideProductForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
   </form>     
 </div>
-<div *ngFor="let product of products" class="card">
+<div *ngFor="let product of products | mostRecentFirst" class="card">
   <div class="card-block"></div>
   <h4><a routerLink="/products/{{product._id}}" class="heading">{{product.name}}</a>
    <small>&nbsp;
