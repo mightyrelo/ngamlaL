@@ -40,6 +40,8 @@ import { BankingComponent } from './banking/banking.component';
 import { ViewPrintInvoiceComponent } from './view-print-invoice/view-print-invoice.component';
 import { InvoiceDetailsComponent } from './invoice-details/invoice-details.component';
 import { InvoiceItemsComponent } from './invoice-items/invoice-items.component';
+import { ViewProductComponent } from './view-product/view-product.component';
+import { ViewProductContentComponent } from './view-product-content/view-product-content.component';
 
 
 
@@ -80,7 +82,9 @@ import { InvoiceItemsComponent } from './invoice-items/invoice-items.component';
     BankingComponent,
     ViewPrintInvoiceComponent,
     InvoiceDetailsComponent,
-    InvoiceItemsComponent
+    InvoiceItemsComponent,
+    ViewProductComponent,
+    ViewProductContentComponent
   ],
   imports: [
     BrowserModule,

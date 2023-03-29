@@ -10,6 +10,8 @@ const sendJSONResponse = (res, stat, content) => {
 
 
 const productsCreateOne = (req, res) => {
+    if(!req.body.name || !req.body.description || !req.body.trade || !req.body.selling  
+        || !req.body.userId){sendJSONResponse(res, 400, {"message":"all fields required"}); return}
     Prod.create({
         name: req.body.name,
         description: req.body.description,
@@ -42,6 +44,7 @@ const productsReadOne = (req, res) => {
 };
 
 const productsUpdateOne = (req, res) => {
+
    if(!req.params.productid) {
     sendJSONResponse(res, 404, {"message":"product id required"});
     return;
@@ -56,15 +59,23 @@ const productsUpdateOne = (req, res) => {
             sendJSONResponse(res, 404, {"message":"product id not found"});
             return;
         }
-        product.name = req.body.name;
-        product.description = req.body.description;
-        product.retail = req.body.retail;
-        product.trade = req.body.trade;
-        product.selling = req.body.selling;
-        product.userId = req.body.userId;
 
+        if(req.body.trade){
+            product.trade = req.body.trade;
+        }
+        if(req.body.retail){
+            product.selling = req.body.selling;
+        }
+        if(req.body.name){
+            product.name = req.body.name;
+        }
+        if(req.body.description){
+            product.description = req.body.description;
+        }
+        
         product.save((err, prod)=>{
             if(err) {
+                console.log('hierss');
                 sendJSONResponse(res, 404, err);
                 return;
             } else {

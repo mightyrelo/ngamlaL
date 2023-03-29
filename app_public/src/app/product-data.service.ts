@@ -28,6 +28,15 @@ export class ProductDataService {
 
   }
 
+  public getProduct(prodId: string) : Promise<Product> {
+    const url : string = `${this.apiBaseUrl}/products/${prodId}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as Product)
+      .catch(this.handleError);
+  }
+
   public getProductByName(name: string) : Promise<Product> {
     const url: string = `${this.apiBaseUrl}/products/name/${name}`;
     return this.http
@@ -54,6 +63,16 @@ export class ProductDataService {
         .then(resp => resp as any)
         .catch(this.handleError);
   }
+
+  public updateProduct(product: Product, productId: string) : Promise<null> {
+    const url: string = `${this.apiBaseUrl}/products/${productId}`;
+    return this.http
+        .put(url, product)
+        .toPromise()
+        .then(resp => resp as any)
+        .catch(this.handleError);
+
+  };
 
   private handleError(error: any): Promise<any> {
     console.error('Something has gone wrong', error);

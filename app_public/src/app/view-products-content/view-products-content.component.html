@@ -18,10 +18,6 @@
        <textarea class="form-control" id="description" name="description" type="text" placeholder="" [(ngModel)]="newProduct.description"></textarea>
     </div>
     <div class="form-group">
-      <label for="retail">retail</label>
-      <input class="form-control" id="retail" name="retail" type="text" placeholder="" [(ngModel)]="newProduct.retail">
-   </div> 
-    <div class="form-group">
       <label for="trade">trade</label>
       <input class="form-control" id="trade" name="trade" type="text" placeholder="" [(ngModel)]="newProduct.trade">
    </div> 
@@ -48,9 +44,8 @@
   </h4>
  <p class="address">{{product.description}}</p>
  <div class="facilities"> 
-   <span class="badge badge-warning">{{product.retail | currency :'R':true}}</span>
-   <span class="badge badge-warning">{{product.trade | currency:'R':true}}</span>
-   <span class="badge badge-warning">{{product.selling | currency:'R': true}}</span>
+   <span class="badge badge-warning">retail: {{product.selling | currency:'R':true}}</span>
+   <span class="badge badge-warning">trade: {{product.trade | currency:'R': true}}</span>
  </div>
  <div class="col-12 col-md-4"></div>
 </div>

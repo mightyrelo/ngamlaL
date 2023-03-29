@@ -23,7 +23,11 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     inStock: Number,
-    userId: String
+    userId: String,
+    createdOn: {
+        type: Date,
+        'default': Date.now
+    }
 });
 
 mongoose.model('Product',productSchema);

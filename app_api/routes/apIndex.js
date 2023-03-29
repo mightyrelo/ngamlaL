@@ -78,7 +78,8 @@ router
    .route('/products/:productid')
    .get(productsCtrl.productsReadOne)
    .put(productsCtrl.productsUpdateOne)
-   .delete(productsCtrl.productsDeleteOne)
+   .delete(productsCtrl.productsDeleteOne);
+
 
 router
     .route('/products/name/:productName')
