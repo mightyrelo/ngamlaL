@@ -33,7 +33,7 @@ export class ViewProductsContentComponent implements OnInit {
     private auth : AuthenticationService) { }
 
   private formIsValid(): boolean {
-    if(this.newProduct.name && this.newProduct.description && this.newProduct.retail && this.newProduct.trade && this.newProduct.selling) {
+    if(this.newProduct.name && this.newProduct.description && this.newProduct.trade && this.newProduct.selling) {
       return true;
     } else {
       return false;
