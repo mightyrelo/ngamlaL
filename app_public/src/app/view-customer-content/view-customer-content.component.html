@@ -9,7 +9,7 @@
         <i class="fa{{dbCustomer.rating < 5 ? 'r':'s' }} fa-star"></i>
       </small>
     </p>
-    <p>{{dbCustomer.name}} <span (click)="displayForm2=true" style="float:right">Edit</span></p>
+    <p>{{dbCustomer.name}} <span (click)="displayForm2=true" style="float:right"><i class="fa-sharp fa-solid fa-user-pen"></i></span></p>
     <div *ngIf="displayForm2" class="col-12 col-md-8 heading">
       <form (ngSubmit)="onCustomerSubmit(dbCustomer._id)" method="post" role="form">
         <div *ngIf="formError2" class="alert alert-danger">
@@ -109,7 +109,7 @@
                           </select>                         
                         </div>
                         <div class="col-2 col-md-2">
-                          <small><button (click)="addItemToQuote()" type="button" role="button" class="btn-primary sm-button">add</button></small>
+                          <small><button (click)="addItemToQuote()" type="button" role="button" class="btn-primary sm-button"><i class="fa-sharp fa-solid fa-cart-plus"></i></button></small>
                         </div>
                     </div>  
                     <div class="form-group">
