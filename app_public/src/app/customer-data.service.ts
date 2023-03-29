@@ -65,6 +65,15 @@ export class CustomerDataService {
       .catch(this.handleError);
   }
 
+  public updateCustomer(customer: Customer, customerId: string) : Promise<any> {
+    const url: string = `${this.apiBaseUrl}/customers/${customerId}`;
+    return this.http
+        .put(url, customer)
+        .toPromise()
+        .then(resp => resp as any)
+        .catch(this.handleError);
+  }
+
  
 
   private handleError(error: any) : Promise<any> {

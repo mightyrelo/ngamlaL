@@ -31,13 +31,32 @@ export class ViewCustomerContentComponent implements OnInit {
     summary: ''
   } 
 
+  //form processing
+  public formError2  = '';
+  public displayForm2 : boolean = false;
+  public formCustomer : Customer = {
+    _id: '',
+    name: '',
+    address: '',
+    rating: null,
+    email: '',
+    contact: null,
+    gender: '',
+    facilities: [],
+    quotations: [],
+    invoices: [],
+    createdOn: '',
+    flagged: false,
+    userId: '',
+
+  };
 
   public newQuotation = {
     quoteItems: [],
     summary: '',
-    amount: 0,
-    expense: 0,
-    profit: 0,
+    amount: null,
+    expense: null,
+    profit:null,
     author: '',
     flagged: false,
     _id: ''
@@ -313,9 +332,40 @@ export class ViewCustomerContentComponent implements OnInit {
     }
   }
 
+  
+
+  onCustomerSubmit(customerId: string){
+    if(true){
+      this.customerDataService.updateCustomer(this.formCustomer, customerId)
+       .then (dbCus =>  {
+        console.log('customer saved', dbCus);
+        let customers = this.customers.slice(0);
+        customers.unshift(dbCus);
+        this.customers = customers;
+        this.resetAndHideCustomerForm();
+        this.getCustomer(customerId);
+       })
+    } 
+  }
+
+  public resetAndHideCustomerForm() : void {
+    this.formError2 = '';
+    this.displayForm2 = false;
+    this.formCustomer.name = '',
+    this.formCustomer.contact = null;
+    this.formCustomer.address = '';
+    this.formCustomer.rating = null;
+    this.formCustomer.gender = '';
+    this.formCustomer.facilities = [];
+    this.formCustomer.quotations = [];
+    this.formCustomer.invoices = [];
+    this.formCustomer.email = '';
+    this.formCustomer.flagged = false;
+    this.getCustomers();
+  }
+
 
   ngOnInit() {
-    
     this.getCustomers();
     this.readProducts();
     for(let i = 1; i <= 30;i++){

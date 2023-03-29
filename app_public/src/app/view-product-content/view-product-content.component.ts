@@ -60,6 +60,11 @@ export class ViewProductContentComponent implements OnInit {
       .then(response => this.products = response);
   }
 
+  public getProduct(id: string) : void {
+    this.prodDataService.getProduct(id)
+        .then(resp => this.dbProduct = resp);
+  }
+
   public onProductSubmit(productId : string){
     if(this.formIsValid()){
       this.newProduct.userId = this.getUserName();
@@ -71,6 +76,7 @@ export class ViewProductContentComponent implements OnInit {
         products.unshift(dbProd);
         this.products = products;
         this.resetAndHideProductForm();
+        this.getProduct(productId);
        })
     } else {
       	this.formError = 'Missing fields required, give it another go!'

@@ -68,7 +68,7 @@ const doUpdateCustomers = (req, res, customer) => {
     if(req.body.contact) {
         customer.contact = req.body.contact;
     }
-    if(req.body.facilities) {
+    if(req.body.facilities.length > 1) {
       customer.facilities = req.body.facilities.split(', ');
     }
     if(req.body.email) {
