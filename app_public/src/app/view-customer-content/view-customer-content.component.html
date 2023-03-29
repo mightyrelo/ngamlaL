@@ -116,7 +116,7 @@
                     </div>
                     
                     <small><button  type="submit" role="button" class="btn-primary sm-button">quote</button></small>
-                    <small><button (click)="resetAndHideQuoteForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
+                    <small><button (click)="resetAndHideQuoteForm()" type="button" role="button" class="btn-primary sm-button"><i class="fa-solid fa-xmark"></i></button></small>
                   </form>     
                 </div>
                 <div *ngFor="let quote of dbCustomer.quotations | mostRecentFirst" class="row review">
