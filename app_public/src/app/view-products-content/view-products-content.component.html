@@ -22,13 +22,13 @@
       <input class="form-control" id="trade" name="trade" type="text" placeholder="" [(ngModel)]="newProduct.trade">
    </div> 
    <div class="form-group">
-    <label for="selling">selling</label>
+    <label for="selling">retail</label>
     <input class="form-control" id="selling" name="selling" type="text" placeholder="" [(ngModel)]="newProduct.selling">
    </div>
     <div class="form-group">
     </div>
-    <small><button  type="submit" role="button" class="btn-primary sm-button">add</button> </small>
-    <small><button (click)="resetAndHideProductForm()" type="button" role="button" class="btn-primary sm-button">cancel</button></small>
+    <small><button  type="submit" role="button" class="btn-primary sm-button"><i class="fa-solid fa-check"></i></button> </small>
+    <small><button (click)="resetAndHideProductForm()" type="button" role="button" class="btn-primary sm-button"><i class="fa-solid fa-xmark"></i></button></small>
   </form>     
 </div>
 <div *ngFor="let product of products | mostRecentFirst" class="card">

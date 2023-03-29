@@ -12,7 +12,6 @@ const productSchema = new mongoose.Schema({
     },
     retail: {
         type: Number,
-        required: true
     },
     trade: {
         type: String,

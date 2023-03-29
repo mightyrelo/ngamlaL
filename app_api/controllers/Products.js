@@ -15,12 +15,12 @@ const productsCreateOne = (req, res) => {
     Prod.create({
         name: req.body.name,
         description: req.body.description,
-        retail: req.body.retail,
         trade: req.body.trade,
         selling: req.body.selling,
         userId: req.body.userId
     },(err, product)=>{
         if(err) {
+            console.log('herew ew are');
             sendJSONResponse(res, 400, err);
         } else {
             sendJSONResponse(res, 201, product);
