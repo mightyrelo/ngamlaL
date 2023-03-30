@@ -10,7 +10,6 @@ export class MostRecentFirstPipe implements PipeTransform {
     const createdOnA = a.createdOn;
     const createdOnB = b.createdOn;
     let comparison = 1;
-    console.log(a.createdOn);
     if(createdOnA > createdOnB) {
       comparison = -1;
     }

@@ -236,7 +236,7 @@ h4 small {
     padding: 1em;
   }
 
-  select option {
+  select {
     background-color: rgba(0,100,0, 0.2);
     color: white;
 
