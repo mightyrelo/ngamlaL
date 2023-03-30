@@ -26,6 +26,13 @@ const productSchema = new mongoose.Schema({
     createdOn: {
         type: Date,
         'default': Date.now
+    },
+    regalCode: {
+        type: String
+    },
+    category: {
+        type: String,
+        'default': 'general'
     }
 });
 
